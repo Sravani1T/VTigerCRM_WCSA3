@@ -32,7 +32,7 @@ public class CreateOrganizationTest extends BaseClass
 		softAssert.assertTrue(organization.getPageHeader().contains("Organization"));
 		
 		organization.clickPlusButton();
-		softAssert.assertTrue(createOrganization.getPageHeader().contains("Creating  Organization"));
+		softAssert.assertTrue(createOrganization.getPageHeader().contains("Creating New  Organization"));
 		
 		
 		Map<String,String> map = excel.getDataBasedOnKey("TestData", "Create Organization");
