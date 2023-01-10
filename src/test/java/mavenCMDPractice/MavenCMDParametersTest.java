@@ -10,28 +10,23 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class MavenCMDPracticeTest 
-{
-	WebDriver driver ;
+public class MavenCMDParametersTest {
+	WebDriver driver;
 	@Test
-	public void vtigerLoginTest()
-	{
+	public void vtigerLoginTest() {
+		
 		String browser = System.getProperty("browser");
-		if(browser.equals("chrome"))
-		{
+		if(browser.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		}
-		else if(browser.equals("firefox")) 
-		{
-			WebDriverManager.chromedriver().setup();
-			 driver = new FirefoxDriver();
+		else if(browser.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 		}
-		
 		driver.manage().window().maximize();
 		String url = System.getProperty("url");
 		driver.get(url);
-		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		driver.findElement(By.name("user_name")).sendKeys(System.getProperty("user"));
@@ -39,6 +34,8 @@ public class MavenCMDPracticeTest
 		driver.findElement(By.id("submitButton")).click();
 		
 		driver.quit();
+		
+		
 	}
 
 }
