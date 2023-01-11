@@ -18,8 +18,8 @@ public class JavaUtility
 	 * @param limit
 	 * @return
 	 */
-	public int generateRandomNumber(int limit)
-	{
+	
+	public int generateRandomNumber(int limit) {
 		Random random = new Random();
 		return random.nextInt(limit);
 	}
@@ -28,9 +28,7 @@ public class JavaUtility
 	 * This method is used to get current time
 	 * @return
 	 */
-	
-	public String currentTime()
-	{
+	public String currentTime() {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy_hh_mm_sss");
 		String actualDate = sdf.format(date);

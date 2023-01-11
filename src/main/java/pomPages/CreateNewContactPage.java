@@ -64,7 +64,7 @@ public class CreateNewContactPage {
 	public void selectExistingOrganization(WebDriverUtility web, String orgName) {
 		organizationPlusButton.click();
 		String parentWindow = web.getParentWindow();
-		web.handleChildBrowser();
+		web.handeChildBrowser();
 				
 		for(WebElement org: organizationsList) {
 			String name = org.getText();

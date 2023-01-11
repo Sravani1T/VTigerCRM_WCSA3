@@ -32,7 +32,7 @@ public class CreateAndDuplicateLeadTest {
 		String browser = property.getDataFromProperties("browser");
 		long time = Long.parseLong(property.getDataFromProperties("timeouts"));
 		
-		WebDriver driver = web.OpenApplication(browser, url, time);
+		WebDriver driver = web.openApplication(browser, url, time);
 		
 		LoginPage login = new LoginPage(driver);
 		HomePage home = new HomePage(driver);

@@ -20,70 +20,61 @@ import pomPages.NewLeadInfoPage;
 import pomPages.NewOrganizationInfoPage;
 import pomPages.OrganizationsPage;
 
-public class BaseClass
-{
+public class BaseClass {
+
 	protected WebDriverUtility web;
-	protected  PropertyFileUtility property;
+	protected PropertyFileUtility property;
 	protected ExcelFileUtility excel;
 	protected JavaUtility javaUtil;
 	protected WebDriver driver;
 	protected LoginPage login;
 	protected HomePage home;
-	
-	protected OrganizationsPage organization;
-	protected CreateNewOrganizationPage createOrganization;
-	protected NewOrganizationInfoPage newOrganization;
-	
 	protected ContactsPage contacts;
 	protected CreateNewContactPage createContact;
 	protected NewContactInfoPage newContact;
-	
+	protected OrganizationsPage organization;
+	protected CreateNewOrganizationPage createOrganization;
+	protected NewOrganizationInfoPage newOrganization;
 	protected LeadsPage leads;
 	protected CreateNewLeadPage createLead;
 	protected NewLeadInfoPage newLeadInfo;
 	protected DuplicatingPage duplicating;
 	public static WebDriver sdriver;
 	public static JavaUtility sjavaUtil;
-	
-	//@Before Suite
-	//@BeforeTest
-	
+
+	// @BeforeSuite
+	// @BeforeTest
 	@BeforeClass
-	public void classSetup()
-	{
-		 web = new WebDriverUtility();
-		 property = new PropertyFileUtility();
-		 ExcelFileUtility excel = new ExcelFileUtility();
-		 javaUtil = new JavaUtility();
-		 		 
-		// sjavaUtil = javaUtil;
-		 		 
+	public void classSetup() {
+		web = new WebDriverUtility();
+		property = new PropertyFileUtility();
+		excel = new ExcelFileUtility();
+		javaUtil = new JavaUtility();
+		sjavaUtil = javaUtil;
 		property.propertyFileInitialization(IConstantPath.PROPERTY_FILE_PATH);
 		excel.excelIntialization(IConstantPath.EXCEL_FILE_PATH);
-		
+
 		String url = property.getDataFromProperties("url");
 		String browser = property.getDataFromProperties("browser");
 		long time = Long.parseLong(property.getDataFromProperties("timeouts"));
 
-		driver = web.OpenApplication(browser, url, time);
-	    sdriver = driver;
+		driver = web.openApplication(browser, url, time);
+		sdriver = driver;
 		login = new LoginPage(driver);
 		Assert.assertTrue(login.getPageHeader().contains("vtiger"));
+		
 	}
-	
+
 	@BeforeMethod
-	public void methodSetup()
-	{
+	public void methodSetup() {
+		
 		home = new HomePage(driver);
-		
-		organization = new OrganizationsPage(driver);
-		createOrganization = new CreateNewOrganizationPage(driver);
-		newOrganization = new NewOrganizationInfoPage(driver);
-		
 		contacts = new ContactsPage(driver);
 		createContact = new CreateNewContactPage(driver);
 		newContact = new NewContactInfoPage(driver);
-		
+		organization = new OrganizationsPage(driver);
+		createOrganization = new CreateNewOrganizationPage(driver);
+		newOrganization = new NewOrganizationInfoPage(driver);
 		leads = new LeadsPage(driver);
 		createLead = new CreateNewLeadPage(driver);
 		newLeadInfo = new NewLeadInfoPage(driver); 
@@ -94,7 +85,7 @@ public class BaseClass
 		login.loginToApplication(username, password);
 		Assert.assertTrue(home.getPageHeader().contains("Home"));
 	}
-	
+
 	@AfterMethod
 	public void methodTeardown() {
 		home.signOut(web);
@@ -107,10 +98,5 @@ public class BaseClass
 	}
 	// @AfterTest
 	// @AfterSuite
-		
-		 
-		
-		
-		
-	
+
 }

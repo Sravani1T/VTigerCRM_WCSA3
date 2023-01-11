@@ -29,7 +29,7 @@ public class CreateContactWithExistingOrganization {
 		String browser = property.getDataFromProperties("browser");
 		long time = Long.parseLong(property.getDataFromProperties("timeouts"));
 
-		WebDriver driver = web.OpenApplication(browser, url, time);
+		WebDriver driver = web.openApplication(browser, url, time);
 
 		String title = driver.findElement(By.xpath("//a[@href='http://www.vtiger.com']")).getText();
 
@@ -74,7 +74,7 @@ public class CreateContactWithExistingOrganization {
 		driver.findElement(By.xpath("//img[contains(@onclick,'Accounts&action')]")).click();
 
 		String parentWindow = web.getParentWindow();
-		web.handleChildBrowser();
+		web.handeChildBrowser();
 
 		String organization = map.get("Organization Name");
 		List<WebElement> organizationList = driver.findElements(By.xpath("//div[@id='ListViewContents']/descendant::table[@cellpadding='5']/descendant::tr/td[1]/a"));
