@@ -177,7 +177,8 @@ public class WebDriverUtility
 	/**
 	 * This method is used to close the browser
 	 */
-	public void closeBrowser() {
+	public void closeBrowser() 
+	{
 		driver.quit();
 	}
 }

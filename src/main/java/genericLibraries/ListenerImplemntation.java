@@ -33,11 +33,12 @@ public class ListenerImplemntation implements ITestListener
 	public void onTestFailure(ITestResult result) {
 		test.fail(result.getMethod().getMethodName()+" Fail");
 		
-		       // These 2 lines for getting Base64 Screenshot
+		      // these 2 lines for getting screenshot in normal      
 		String path =new WebDriverUtility().getScreenshot(BaseClass.sjavaUtil,BaseClass.sdriver, result.getMethod().getMethodName());
         test.addScreenCaptureFromPath(path);
 		
-		      // these 2 lines for getting screenshot in normal
+		      
+               // These 2 lines for getting Base64 Screenshot
 		//String path1 = new WebDriverUtility().getScreenshot(BaseClass.sdriver);
 		//test.addScreenCaptureFromBase64String(path1);	
         }
